@@ -111,7 +111,6 @@ labels     printf("%d  %s\n",  LABELS     ,  yytext);
 
 %%
 
-
 int yywrap() {
   return 1;
 }
