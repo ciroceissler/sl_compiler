@@ -110,3 +110,8 @@ labels     printf("%d  %s\n",  LABELS     ,  yytext);
 <<EOF>>  return  END_OF_FILE;
 
 %%
+
+
+int yywrap() {
+  return 1;
+}
