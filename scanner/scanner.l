@@ -21,7 +21,7 @@ ID       [a-z][a-z0-9]*
 %x comment
 %%
 
-%{ 
+%{
 /* token specifications */
 %}
 
@@ -54,60 +54,60 @@ ID       [a-z][a-z0-9]*
 /* reserved words */
 %}
 
-else       printf("%d  %s\n",  ELSE       ,  yytext);
-if         printf("%d  %s\n",  IF         ,  yytext);
-functions  printf("%d  %s\n",  FUNCTIONS  ,  yytext);
-goto       printf("%d  %s\n",  GOTO       ,  yytext);
-return     printf("%d  %s\n",  RETURN     ,  yytext);
-types      printf("%d  %s\n",  TYPES      ,  yytext);
-var        printf("%d  %s\n",  VAR        ,  yytext);
-vars       printf("%d  %s\n",  VARS       ,  yytext);
-void       printf("%d  %s\n",  VOID       ,  yytext);
-while      printf("%d  %s\n",  WHILE      ,  yytext);
-labels     printf("%d  %s\n",  LABELS     ,  yytext);
+else       return  ELSE       ;
+if         return  IF         ;
+functions  return  FUNCTIONS  ;
+goto       return  GOTO       ;
+return     return  RETURN     ;
+types      return  TYPES      ;
+var        return  VAR        ;
+vars       return  VARS       ;
+void       return  VOID       ;
+while      return  WHILE      ;
+labels     return  LABELS     ;
 
 %{
 /* symbols */
 %}
 
-"=="  printf("%d  %s\n",  EQUAL             ,  yytext);
-"!="  printf("%d  %s\n",  DIFFERENT         ,  yytext);
-"<"   printf("%d  %s\n",  LESS              ,  yytext);
-"<="  printf("%d  %s\n",  LESS_OR_EQUAL     ,  yytext);
-">"   printf("%d  %s\n",  GREATER           ,  yytext);
-">="  printf("%d  %s\n",  GREATER_OR_EQUAL  ,  yytext);
-"+"   printf("%d  %s\n",  PLUS              ,  yytext);
-"-"   printf("%d  %s\n",  MINUS             ,  yytext);
-"|"   printf("%d  %s\n",  OR                ,  yytext);
-"*"   printf("%d  %s\n",  MULTIPLY          ,  yytext);
-"/"   printf("%d  %s\n",  DIV               ,  yytext);
-"&"   printf("%d  %s\n",  AND               ,  yytext);
-"++"  printf("%d  %s\n",  UNARY             ,  yytext);
-"}"   printf("%d  %s\n",  CLOSE_BRACE       ,  yytext);
-"]"   printf("%d  %s\n",  CLOSE_BRACKET     ,  yytext);
-")"   printf("%d  %s\n",  CLOSE_PAREN       ,  yytext);
-":"   printf("%d  %s\n",  COLON             ,  yytext);
-","   printf("%d  %s\n",  COMMA             ,  yytext);
-"="   printf("%d  %s\n",  ASSIGN            ,  yytext);
-"!"   printf("%d  %s\n",  NOT               ,  yytext);
-"{"   printf("%d  %s\n",  OPEN_BRACE        ,  yytext);
-"["   printf("%d  %s\n",  OPEN_BRACKET      ,  yytext);
-"("   printf("%d  %s\n",  OPEN_PAREN        ,  yytext);
-";"   printf("%d  %s\n",  SEMI_COLON        ,  yytext);
+"=="  return  EQUAL             ;
+"!="  return  DIFFERENT         ;
+"<"   return  LESS              ;
+"<="  return  LESS_OR_EQUAL     ;
+">"   return  GREATER           ;
+">="  return  GREATER_OR_EQUAL  ;
+"+"   return  PLUS              ;
+"-"   return  MINUS             ;
+"|"   return  OR                ;
+"*"   return  MULTIPLY          ;
+"/"   return  DIV               ;
+"&"   return  AND               ;
+"++"  return  UNARY             ;
+"}"   return  CLOSE_BRACE       ;
+"]"   return  CLOSE_BRACKET     ;
+")"   return  CLOSE_PAREN       ;
+":"   return  COLON             ;
+","   return  COMMA             ;
+"="   return  ASSIGN            ;
+"!"   return  NOT               ;
+"{"   return  OPEN_BRACE        ;
+"["   return  OPEN_BRACKET      ;
+"("   return  OPEN_PAREN        ;
+";"   return  SEMI_COLON        ;
 
 %{
 /* identifiers and integers */
 %}
 
-{ID}      printf("%d  %s\n",  IDENTIFIER  ,  yytext);
-{DIGIT}+  printf("%d  %s\n",  INTEGER     ,  yytext);
+{ID}      return  IDENTIFIER  ;
+{DIGIT}+  return  INTEGER     ;
 
 %{
 /* others */
 %}
 
-.        return  LEXICAL_ERROR;
-<<EOF>>  return  END_OF_FILE;
+<<EOF>>  return  END_OF_FILE   ;
+.        return  LEXICAL_ERROR ;
 
 %%
 
